@@ -13,7 +13,7 @@ events
 length
 ------
 
-Standard property [@length@](Standart accessor methods supported).
+Standard property [length](Standart accessor methods supported).
 
 
 Accessor methods
