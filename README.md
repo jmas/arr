@@ -1,7 +1,11 @@
-arr
-===
+This is JavaScript Array extended. It can throw event ```change```. You can use it for something like [Backbone Collection](http://backbonejs.org/#Collection).
 
-JavaScript Array extended.
+
+
+new Arr()
+=========
+
+Initialize new array.
 
 
 
@@ -155,7 +159,7 @@ Events
 
 This library throw only one event ```change```.
 
-How to use events? You can use array events like events in Backbone Model.
+How to use events? You can use array events like events in (Backbone Collection)[http://backbonejs.org/#Collection].
 
 ```javascript
 var fruits = new Arr('apple', 'orange', 'pineapple');
