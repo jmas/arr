@@ -203,7 +203,7 @@ fruits.push('mango');
 // ['apple', 'orange', 'pineapple', 'mango']
 ```
 
-Events Triggering and Handling
+Events Handling and Triggering
 ==============================
 
 on(eventName, handler)
