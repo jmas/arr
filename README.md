@@ -10,6 +10,24 @@ Properties
 events
 ------
 
+Attached events.
+
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.on('change', function() {
+  console.log('fruits list is changed.');
+});
+
+// fruits.events
+// [{
+//  "name": "change",
+//  "handler": function() { ... }
+// }]
+
+fruits.push('mango');
+```
+
 length
 ------
 
