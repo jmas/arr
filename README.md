@@ -206,7 +206,7 @@ fruits.push('mango');
 Events Handling and Triggering
 ==============================
 
-*Notice:* Traditional mutator ```arr[0] = value``` do not trigger event ```change```. Use method ```set()``` instead ```arr[0] = value```.
+***Notice:*** Traditional mutator ```arr[0] = value``` do not trigger event ```change```. Use method ```set()``` instead ```arr[0] = value```.
 
 on(eventName, handler)
 ----------------------
