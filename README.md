@@ -4,6 +4,7 @@ arr
 JavaScript Array extended.
 
 
+
 Properties
 ==========
 
@@ -15,7 +16,7 @@ List of Attached Events.
 ```javascript
 var fruits = new Arr('apple', 'orange', 'pineapple');
 
-fruits.on('change', function() {
+fruits.on('change', function(event) {
   console.log('fruits list is changed.');
 });
 
@@ -35,6 +36,7 @@ length
 ------
 
 Standard property [```length```](Standart accessor methods supported).
+
 
 
 Accessor methods
@@ -57,14 +59,8 @@ fruits.get(20); // trying to get undefined element
 // null
 ```
 
-findOne(handler)
------------------
-
-findAll(handler)
------------------
-
-Standard accessor methods supported
------------------------------------
+Standard accessor methods are supported
+---------------------------------------
 
 * [concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) Returns a new array comprised of this array joined with other array(s) and/or value(s).
 * [join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) Joins all elements of an array into a string.
@@ -76,11 +72,15 @@ Standard accessor methods supported
 
 and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Accessor_methods).
 
+
+
 Mutator methods
 ===============
 
 set(index, value)
 -----------------
+
+Set value by index. Will be triggered event ```change```.
 
 Example:
 ```javascript
@@ -99,7 +99,7 @@ fruits.get(3, 'nut');
 update(handler)
 ---------------
 
-Update one or more items.
+Update one or more items. Will be triggered event ```change```.
 
 Example:
 ```javascript
@@ -107,7 +107,7 @@ var fruits = new Arr('apple', 'orange', 'pineapple');
 
 fruits.update(function(value, index) {
   if (index === 2) {
-    return 'lime';
+    return 'lime';  // "return" not undefined value for update item
   }
 });
 // ['apple', 'orange', 'lime']
@@ -118,8 +118,8 @@ fruits.update(function(value, index) {
 // [0, 1, 2]
 ```
 
-Standard mutator methods supported
-----------------------------------
+Standard mutator methods are supported
+--------------------------------------
 
 Each mutator method throw event ```change```. How? You can read in section Events.
 
@@ -133,6 +133,51 @@ Each mutator method throw event ```change```. How? You can read in section Event
 
 and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods).
 
+
+
+Iteration methods
+=================
+
+* [forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) Calls a function for each element in the array.
+* [every()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) Returns true if every element in this array satisfies the provided testing function.
+* [some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) Returns true if at least one element in this array satisfies the provided testing function.
+* [filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) Creates a new array with all of the elements of this array for which the provided filtering function returns true.
+* [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) Creates a new array with the results of calling a provided function on every element in this array.
+* [reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value.
+* [reduceRight()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight) Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value.
+
+
+
 Events
 ======
+
+This library throw only one event ```change```.
+
+How to use events? You can use array events like events in Backbone Model.
+
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.on('change', function(event) {
+  // event
+  // {
+  //   "type": "push",
+  //   "args": ['mongo'],
+  //   "result": 4
+  // }
+  
+  console.log('fruits list is changed.');
+});
+
+// fruits.events
+// [{
+//  "name": "change",
+//  "handler": function() { ... }
+// }]
+
+fruits.push('mango');
+// fruits list is changed.
+// fruits
+// ['apple', 'orange', 'pineapple', 'mango']
+```
 
