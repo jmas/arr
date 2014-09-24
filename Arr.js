@@ -29,34 +29,6 @@
   /**
    *
    */
-  Arr.prototype.findOne = function(handler) {
-    for (var i=0,len=this.length; i<len; i++) {
-      if (handler.apply(this, [this[i], i]) === true) {
-        return this[i];
-      }
-    }
-   
-    return null;
-  };
-   
-  /**
-   *
-   */
-  Arr.prototype.findAll = function(handler) {
-    var items = [];
-   
-    for (var i=0,len=this.length; i<len; i++) {
-      if (handler.apply(this, [this[i], i]) === true) {
-        items.push(this[i]);
-      }
-    }
-   
-    return items;
-  };
-   
-  /**
-   *
-   */
   Arr.prototype.on = function(eventName, handler) {
     this.events.push({
       name: eventName,
