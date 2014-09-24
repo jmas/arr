@@ -47,7 +47,7 @@ Accessor methods
 ================
 
 get(index [, defaultValue])
-----------------------------
+---------------------------
 
 Example:
 ```javascript
