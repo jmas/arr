@@ -1,7 +1,7 @@
 arr
 ===
 
-JavaScript Array extended
+JavaScript Array extended.
 
 
 Properties
@@ -10,7 +10,7 @@ Properties
 events
 ------
 
-Attached events.
+List of Attached Events.
 
 ```javascript
 var fruits = new Arr('apple', 'orange', 'pineapple');
@@ -34,7 +34,7 @@ fruits.push('mango');
 length
 ------
 
-Standard property [length](Standart accessor methods supported).
+Standard property [```length```](Standart accessor methods supported).
 
 
 Accessor methods
@@ -43,8 +43,7 @@ Accessor methods
 get(index [, defaultValue])
 ----------------------------
 
-Examples:
-
+Example:
 ```javascript
 var fruits = new Arr('apple', 'orange', 'pineapple');
 
@@ -78,15 +77,34 @@ Standard accessor methods supported
 and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Accessor_methods).
 
 Mutator methods
-========
+===============
 
 set(index, value)
-------------------
+-----------------
+
+Example:
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.set(0, 'banana');
+// ['banana', 'orange', 'pineapple']
+
+fruits.get(1, 'lime');
+// ['banana', 'lime', 'pineapple']
+
+fruits.get(3, 'nut');
+// ['banana', 'lime', 'pineapple', 'nut']
+```
 
 update(handler)
 ----------------
 
+Standard mutator methods supported
+----------------------------------
+
+Each mutator method throw event ```change```. How? You can read in Events handling.
 
 
-Events
-======
+
+Events handling
+===============
