@@ -26,6 +26,9 @@ fruits.on('change', function() {
 // }]
 
 fruits.push('mango');
+// fruits list is changed.
+// fruits
+// ['apple', 'orange', 'pineapple', 'mango']
 ```
 
 length
