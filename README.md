@@ -146,6 +146,8 @@ Iteration methods
 * [reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value.
 * [reduceRight()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight) Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value.
 
+and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods).
+
 
 
 Events
