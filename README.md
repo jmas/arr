@@ -64,7 +64,8 @@ findOne(handler)
 findAll(handler)
 -----------------
 
-Standard accessor methods supported:
+Standard accessor methods supported
+-----------------------------------
 
 * [concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
 * [join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
