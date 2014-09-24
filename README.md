@@ -175,7 +175,7 @@ var fruitsWithWordApple = fruits.filter(function(value, index) {
 Events
 ======
 
-This library throw only one event ```change```.
+Instance of Arr throw only one event ```change```.
 
 How to use events? You can use array events like events in [Backbone Collection](http://backbonejs.org/#Collection).
 
