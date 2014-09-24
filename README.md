@@ -152,6 +152,22 @@ Iteration methods
 
 and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods).
 
+You can use method ```filter()``` for searching items by conditions.
+
+Example:
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+var fruitsWithWordApple = fruits.filter(function(value, index) {
+  if (value.indexOf('apple') !== -1) {
+    return true;
+  } else {
+    return false;
+  }
+});
+// fruitsWithWordApple
+// ['apple', 'pineapple']
+```
 
 
 Events
