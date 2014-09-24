@@ -203,3 +203,44 @@ fruits.push('mango');
 // ['apple', 'orange', 'pineapple', 'mango']
 ```
 
+Events Triggering and Handling
+==============================
+
+on(eventName, handler)
+----------------------
+
+Attach event handler.
+
+Example:
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.on('change', function(event) {
+  // event
+  // {
+  //   "type": "push",
+  //   "args": ['mango'],
+  //   "result": 4
+  // }
+  
+  console.log('fruits list is changed.');
+});
+
+fruits.push('mango');
+```
+
+trigger(eventName, args)
+------------------------
+
+Trigger some event.
+
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.on('change', function(event) {
+  console.log('fruits list is changed.');
+});
+
+fruits.trigger('change');
+// fruits list is changed.
+```
