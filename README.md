@@ -81,6 +81,8 @@ and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Glob
 Mutator methods
 ===============
 
+***Notice:*** Traditional mutator ```arr[index] = value``` do not trigger event ```change```. Use method ```set(index, value)``` instead ```arr[index] = value```.
+
 set(index, value)
 -----------------
 
