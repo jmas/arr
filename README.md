@@ -97,7 +97,26 @@ fruits.get(3, 'nut');
 ```
 
 update(handler)
-----------------
+---------------
+
+Update one or more items.
+
+Example:
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.update(function(value, index) {
+  if (index === 2) {
+    return 'lime';
+  }
+});
+// ['apple', 'orange', 'lime']
+
+fruits.update(function(value, index) {
+  return index;
+});
+// [0, 1, 2]
+```
 
 Standard mutator methods supported
 ----------------------------------
