@@ -3,20 +3,41 @@ arr
 
 JavaScript Array extended
 
-Getters
+
+Accessor methods
 =======
 
-get(index [, defaultValue])
----
+instance[index]
+---------------
 
-arr[index]
-----------
+.get(index [, defaultValue])
+----------------------------
 
-Mutators
+.findOne(handler)
+-----------------
+
+.findAll(handler)
+-----------------
+
+Standart accessor methods supported:
+
+* [concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+* [join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+* [slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+* [toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString)
+* [toLocaleString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toLocaleString)
+* [indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
+* [lastIndexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf)
+
+
+Mutator methods
 ========
 
-set(index, value)
------------------
+.set(index, value)
+------------------
+
+.update(handler)
+----------------
 
 
 Events
