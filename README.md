@@ -4,22 +4,46 @@ arr
 JavaScript Array extended
 
 
+Properties
+==========
+
+events
+------
+
+length
+------
+
+Standard property [@length@](Standart accessor methods supported).
+
+
 Accessor methods
-=======
+================
 
-instance[index]
----------------
-
-.get(index [, defaultValue])
+get(index [, defaultValue])
 ----------------------------
 
-.findOne(handler)
+Examples:
+
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.get(0);
+// apple
+
+fruits.get(10, 'lime'); // trying to get undefined element - return defaultValue
+// lime
+
+fruits.get(20); // trying to get undefined element
+// null
+```
+
+findOne(handler)
 -----------------
 
-.findAll(handler)
+findAll(handler)
 -----------------
 
-Standart accessor methods supported:
+Standard accessor methods supported:
 
 * [concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
 * [join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
@@ -34,11 +58,12 @@ and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Glob
 Mutator methods
 ========
 
-.set(index, value)
+set(index, value)
 ------------------
 
-.update(handler)
+update(handler)
 ----------------
+
 
 
 Events
