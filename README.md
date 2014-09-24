@@ -175,7 +175,7 @@ Events
 
 This library throw only one event ```change```.
 
-How to use events? You can use array events like events in (Backbone Collection)[http://backbonejs.org/#Collection].
+How to use events? You can use array events like events in [Backbone Collection](http://backbonejs.org/#Collection).
 
 ```javascript
 var fruits = new Arr('apple', 'orange', 'pineapple');
