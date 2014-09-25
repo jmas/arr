@@ -2,8 +2,8 @@ This is JavaScript Array extended. It can throw event ```change```. You can use 
 
 
 
-new Arr()
-=========
+new Arr([item1, item2, ..., itemN])
+===================================
 
 Initialize new array.
 
@@ -233,8 +233,8 @@ fruits.on('change', function(event) {
 fruits.push('mango');
 ```
 
-trigger(eventName, args)
-------------------------
+trigger(eventName [, args])
+---------------------------
 
 Trigger some event.
 
