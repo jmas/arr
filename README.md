@@ -74,7 +74,7 @@ Standard accessor methods are supported
 * [```indexOf()```](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) Returns the first (least) index of an element within the array equal to the specified value, or -1 if none is found.
 * [```lastIndexOf()```](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf) Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none is found.
 
-and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Accessor_methods).
+and [other methods](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Accessor_methods).
 
 
 
@@ -137,7 +137,7 @@ Each mutator method throw event ```change```. How? You can read in section Event
 * [```splice()```](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) Adds and/or removes elements from an array.
 * [```unshift()```](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift) Adds one or more elements to the front of an array and returns the new length of the array.
 
-and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods).
+and [other methods](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods).
 
 Sometimes you need to push array of items to ```Arr```. You can push array of items in this way:
 ```javascript
@@ -169,7 +169,7 @@ Iteration methods
 * [```reduce()```](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value.
 * [```reduceRight()```](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight) Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value.
 
-and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods).
+and [other methods](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods).
 
 You can use method ```filter()``` for searching items by conditions.
 
