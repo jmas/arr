@@ -257,8 +257,8 @@ fruits.trigger('change');
 // fruits list is changed.
 ```
 
-Usecases
-========
+Use Cases
+=========
 
 Send server updates when ```Arr``` is changed.
 
@@ -295,5 +295,4 @@ products.on('change', function(event) {
 products.push({
   name: 'lime'
 });
-// fruits list is changed.
 ```
