@@ -173,7 +173,7 @@ Each mutator method throw event ```change```. How? You can read in section Event
 
 and [other methods](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods).
 
-Sometimes you need to push array of items to ```Arr```. You can push array of items in this way:
+Sometimes you need to push array of items to ```Arr```. You can push array of items in this way (*note:* now you can use method ```insert()```):
 ```javascript
 var fruits = new Arr;
 
