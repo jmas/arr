@@ -57,6 +57,10 @@
    *
    */
   Arr.prototype.update = function(handler) {
+    if (! handler instanceof Function) {
+      throw new Error('handler should be an Function');
+    }
+    
     var oldValue, newValue;
     var result = [];
    
@@ -80,12 +84,27 @@
     return this;
   };
   
-  // 
+  Arr.prototype.insert = function(items) {
+    if (! items instanceof Array) {
+      throw new Error('items should be an Array');
+    }
+    
+    arrayPush.apply(this, items);
+    this.trigger('change', {
+      type: 'insert',
+      items: items
+    });
+    return this;
+  };
   
   /**
    *
    */
   Arr.prototype.remove = function(handler) {
+    if (! handler instanceof Function) {
+      throw new Error('handler should be an Function');
+    }
+    
     var result = [];
     var isRemove;
     
@@ -117,6 +136,10 @@
    *
    */
   Arr.prototype.set = function(index, value) {
+    if (! index instanceof Number) {
+      throw new Error('index should be an Number');
+    }
+    
     this[index] = value;
     this.trigger('change', {
       type: 'update',
