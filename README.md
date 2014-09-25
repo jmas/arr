@@ -102,10 +102,27 @@ fruits.set(3, 'nut');
 // ['banana', 'lime', 'pineapple', 'nut']
 ```
 
+insert([item1, item2, ..., itemN])
+----------------------------------
+
+Insert array of items. Will be triggered event ```change```.
+
+Example:
+```javascript
+var fruits = new Arr();
+
+fruits.inser('apple', 'orange', 'pineapple');
+// ['apple', 'orange', 'pineapple']
+```
+
 update(handler)
 ---------------
 
-Update one or more items. Will be triggered event ```change```.
+Update item if ```handler``` return ```true```. Will be triggered event ```change``` if one or more items updated.
+
+```handler``` can recive data:
+* ```value``` (mixed) current value
+* ```index``` (number) current index
 
 Example:
 ```javascript
@@ -122,6 +139,23 @@ fruits.update(function(value, index) {
   return index;
 });
 // [0, 1, 2]
+```
+
+remove(handler)
+---------------
+
+Remove item if ```handler``` return ```true```. Will be triggered event ```change``` if one or more items removed.
+
+Example:
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.remove(function(value, index) {
+  if (value.indexOf('apple') !== -1) {
+    return true;
+  }
+});
+// ['orange']
 ```
 
 Standard mutator methods are supported
@@ -232,8 +266,8 @@ on(eventName, handler)
 Attach event handler.
 
 ```handler``` can recive ```event``` that have data:
-* ```type``` can be ```insert```, ```update```, ```remove```
-* ```items``` are items that was inserted, updated or removed
+* ```type``` (string) can be ```insert```, ```update```, ```remove```
+* ```items``` (array) are items that was inserted, updated or removed
 
 Example:
 ```javascript
