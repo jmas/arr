@@ -202,9 +202,8 @@ var fruits = new Arr('apple', 'orange', 'pineapple');
 fruits.on('change', function(event) {
   // event
   // {
-  //   "type": "push",
-  //   "args": ['mongo'],
-  //   "result": 4
+  //   "type": "insert",
+  //   "items": ['mongo']
   // }
   
   console.log('fruits list is changed.');
@@ -232,6 +231,10 @@ on(eventName, handler)
 
 Attach event handler.
 
+```handler``` can recive event that have data:
+* ```type``` can be ```insert```, ```update```, ```remove```
+* ```items``` are items that was inserted, updated or removed
+
 Example:
 ```javascript
 var fruits = new Arr('apple', 'orange', 'pineapple');
@@ -239,9 +242,8 @@ var fruits = new Arr('apple', 'orange', 'pineapple');
 fruits.on('change', function(event) {
   // event
   // {
-  //   "type": "push",
-  //   "args": ['mango'],
-  //   "result": 4
+  //   "type": "insert",
+  //   "items": ['mango']
   // }
   
   console.log('fruits list is changed.');
