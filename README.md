@@ -140,7 +140,6 @@ Each mutator method throw event ```change```. How? You can read in section Event
 and [others](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods).
 
 Sometimes you need to push array of items to ```Arr```. You can push array of items in this way:
-
 ```javascript
 var fruits = new Arr;
 
@@ -148,6 +147,16 @@ fruits.push.apply(fruits, ['apple', 'orange', 'pineapple']);
 // fruits
 // ['apple', 'orange', 'pineapple']
 ```
+
+For remove item(s) from ```Arr``` you can use traditional method ```splice()```.
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.splice(0, 1); // remove first item
+// fruits
+// ['orange', 'pineapple']
+```
+
 
 Iteration methods
 =================
