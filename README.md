@@ -231,7 +231,7 @@ on(eventName, handler)
 
 Attach event handler.
 
-```handler``` can recive event that have data:
+```handler``` can recive ```event``` that have data:
 * ```type``` can be ```insert```, ```update```, ```remove```
 * ```items``` are items that was inserted, updated or removed
 
