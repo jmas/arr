@@ -95,10 +95,10 @@ var fruits = new Arr('apple', 'orange', 'pineapple');
 fruits.set(0, 'banana');
 // ['banana', 'orange', 'pineapple']
 
-fruits.get(1, 'lime');
+fruits.set(1, 'lime');
 // ['banana', 'lime', 'pineapple']
 
-fruits.get(3, 'nut');
+fruits.set(3, 'nut');
 // ['banana', 'lime', 'pineapple', 'nut']
 ```
 
