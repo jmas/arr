@@ -107,22 +107,21 @@
     }
     
     var result = [];
-    var isRemove;
-    
-    var i=0, len=this.length;
-    
-    while (i<len) {
+    var stay = [];
+
+    for (var i=0, len=this.length; i<len; i++) {
       isRemove = handler.apply(this, [this[i], i]);
       
       if (isRemove === true) {
         result.push(this[i]);
-        arraySplice.apply(this, [i, 1]);
-        len--;
       } else {
-        i++;
+        stay.push(this[i]);
       }
     }
-   
+
+    arraySplice.apply(this, [0, this.length]);
+    arrayPush.apply(this, stay);
+
     if (result.length > 0) {
       this.trigger('change', {
         type: 'remove',
