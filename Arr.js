@@ -1,4 +1,5 @@
 (function(rootScope) {
+  
   var
     arrayPop = Array.prototype.pop,
     arrayPush = Array.prototype.push,
@@ -238,4 +239,4 @@
   } else {
     rootScope.Arr = Arr;
   }
-})(window);
+})(this);
