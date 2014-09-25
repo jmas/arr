@@ -66,34 +66,61 @@
       
       if (typeof newValue !== 'undefined') {
         this[i] = newValue;
-        result.push({
-          index: i,
-          oldValue: oldValue,
-          newValue: newValue
-        });
+        result.push(newValue);
       }
     }
    
     if (result.length > 0) {
       this.trigger('change', {
         type: 'update',
-        result: result,
-        args: arguments
+        items: result
       });
     }
    
     return this;
   };
+  
+  // 
+  
+  /**
+   *
+   */
+  Arr.prototype.remove = function(handler) {
+    var result = [];
+    var isRemove;
+    
+    var i=0, len=this.length;
+    
+    while (i<len) {
+      isRemove = handler.apply(this, [this[i], i]);
+      
+      if (isRemove === true) {
+        result.push(this[i]);
+        arraySplice.apply(this, [i, 1]);
+        len--;
+      } else {
+        i++;
+      }
+    }
    
+    if (result.length > 0) {
+      this.trigger('change', {
+        type: 'remove',
+        items: result
+      });
+    }
+   
+    return this;
+  };
+  
   /**
    *
    */
   Arr.prototype.set = function(index, value) {
     this[index] = value;
     this.trigger('change', {
-      type: 'set',
-      result: value,
-      args: arguments
+      type: 'update',
+      items: [this[index]]
     });
     return this;
   };
@@ -104,9 +131,8 @@
   Arr.prototype.pop = function() {
     var result = arrayPop.apply(this, arguments);
     this.trigger('change', {
-      type: 'pop',
-      result: result,
-      args: arguments
+      type: 'remove',
+      items: [result]
     });
     return result;
   };
@@ -117,9 +143,8 @@
   Arr.prototype.push = function() {
     var result = arrayPush.apply(this, arguments);
     this.trigger('change', {
-      type: 'push',
-      result: result,
-      args: arguments
+      type: 'insert',
+      items: Array.prototype.slice.call(arguments, 0)
     });
     return result;
   };
@@ -130,9 +155,8 @@
   Arr.prototype.reverse = function() {
     var result = arrayReverse.apply(this, arguments);
     this.trigger('change', {
-      type: 'reverse',
-      result: result,
-      args: arguments
+      type: 'update',
+      items: result.slice(0)
     });
     return result;
   };
@@ -143,9 +167,8 @@
   Arr.prototype.shift = function() {
     var result = arrayShift.apply(this, arguments);
     this.trigger('change', {
-      type: 'shift',
-      result: result,
-      args: arguments
+      type: 'remove',
+      items: [result]
     });
     return result;
   };
@@ -156,9 +179,8 @@
   Arr.prototype.sort = function() {
     var result = arraySort.apply(this, arguments);
     this.trigger('change', {
-      type: 'sort',
-      result: result,
-      args: arguments
+      type: 'update',
+      items: result
     });
     return result;
   };
@@ -167,11 +189,11 @@
    * Adds and/or removes elements from an array.
    */
   Arr.prototype.splice = function() {
+    var items = this.slice(arguments[0], arguments[0]+arguments[1]);
     var result = arraySplice.apply(this, arguments);
     this.trigger('change', {
-      type: 'splice',
-      result: result,
-      args: arguments
+      type: 'remove',
+      items: items
     });
     return result;
   };
@@ -182,9 +204,8 @@
   Arr.prototype.unshift = function() {
     var result = arrayUnshift.apply(this, arguments);
     this.trigger('change', {
-      type: 'unshift',
-      result: result,
-      args: arguments
+      type: 'insert',
+      items: [result]
     });
     return result;
   };
