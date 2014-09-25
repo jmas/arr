@@ -291,12 +291,19 @@ products.on('change', function(event) {
   // products are changed
   // you can use event.type == 'push' to detect items that you need to update on the server
   
+  if (event.type != 'push') { return; }
+  
   // $ is link on jQuery
   $.post('/prosucts', products)
     .fail(function() {
       alert('error');
     })
-    .done(function() {
+    .done(function(updatedProducts) {
+      // update products with updatedProducts that returned from server
+      products.update(function(value, index)) {
+        return updatedProducts[index];
+      });
+      
       alert('products are updated');
     });
 });
