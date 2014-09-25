@@ -5,7 +5,7 @@ This is JavaScript Array extended. It can throw event ```change```. You can use 
 new Arr([item1, item2, ..., itemN])
 ===================================
 
-Initialize new array.
+Initialize new array items: ```item1, item2, ..., itemN```.
 
 
 
