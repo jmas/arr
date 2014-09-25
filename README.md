@@ -285,10 +285,10 @@ products.on('change', function(event) {
   // $ is link on jQuery
   $.post('/prosucts', products)
     .fail(function() {
-      alert( "error" );
+      alert('error');
     })
     .done(function() {
-      alert( "products are saved" );
+      alert('products are updated');
     });
 });
 
