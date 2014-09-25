@@ -102,10 +102,27 @@ fruits.set(3, 'nut');
 // ['banana', 'lime', 'pineapple', 'nut']
 ```
 
+insert([item1, item2, ..., itemN])
+----------------------------------
+
+Insert array of items. Will be triggered event ```change```.
+
+Example:
+```javascript
+var fruits = new Arr();
+
+fruits.inser('apple', 'orange', 'pineapple');
+// ['apple', 'orange', 'pineapple']
+```
+
 update(handler)
 ---------------
 
-Update one or more items. Will be triggered event ```change```.
+Update item if ```handler``` return ```true```. Will be triggered event ```change``` if one or more items updated.
+
+```handler``` can recive data:
+* ```value``` (mixed) current value
+* ```index``` (number) current index
 
 Example:
 ```javascript
@@ -124,6 +141,23 @@ fruits.update(function(value, index) {
 // [0, 1, 2]
 ```
 
+remove(handler)
+---------------
+
+Remove item if ```handler``` return ```true```. Will be triggered event ```change``` if one or more items removed.
+
+Example:
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.remove(function(value, index) {
+  if (value.indexOf('apple') !== -1) {
+    return true;
+  }
+});
+// ['orange']
+```
+
 Standard mutator methods are supported
 --------------------------------------
 
@@ -139,7 +173,7 @@ Each mutator method throw event ```change```. How? You can read in section Event
 
 and [other methods](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods).
 
-Sometimes you need to push array of items to ```Arr```. You can push array of items in this way:
+Sometimes you need to push array of items to ```Arr```. You can push array of items in this way (*note:* now you can use method ```insert()```):
 ```javascript
 var fruits = new Arr;
 
@@ -148,7 +182,7 @@ fruits.push.apply(fruits, ['apple', 'orange', 'pineapple']);
 // ['apple', 'orange', 'pineapple']
 ```
 
-For remove item(s) from ```Arr``` you can use traditional method ```splice()```.
+For remove item(s) from ```Arr``` you can use traditional method ```splice()``` (*note:* now you can use method ```remove()```).
 ```javascript
 var fruits = new Arr('apple', 'orange', 'pineapple');
 
@@ -202,9 +236,8 @@ var fruits = new Arr('apple', 'orange', 'pineapple');
 fruits.on('change', function(event) {
   // event
   // {
-  //   "type": "push",
-  //   "args": ['mongo'],
-  //   "result": 4
+  //   "type": "insert",
+  //   "items": ['mongo']
   // }
   
   console.log('fruits list is changed.');
@@ -232,6 +265,10 @@ on(eventName, handler)
 
 Attach event handler.
 
+```handler``` can recive ```event``` that have data:
+* ```type``` (string) can be ```insert```, ```update```, ```remove```
+* ```items``` (array) are items that was inserted, updated or removed
+
 Example:
 ```javascript
 var fruits = new Arr('apple', 'orange', 'pineapple');
@@ -239,9 +276,8 @@ var fruits = new Arr('apple', 'orange', 'pineapple');
 fruits.on('change', function(event) {
   // event
   // {
-  //   "type": "push",
-  //   "args": ['mango'],
-  //   "result": 4
+  //   "type": "insert",
+  //   "items": ['mango']
   // }
   
   console.log('fruits list is changed.');
@@ -289,7 +325,7 @@ var products = new Arr(
 
 products.on('change', function(event) {
   // products are changed
-  // you can use event.type == 'push' to detect items that you need to update on the server
+  // you can use event.type == 'insert' or 'update' or 'remove' to detect items that you need to update on the server
   
   // $ is link on jQuery
   $.post('/prosucts', products)
