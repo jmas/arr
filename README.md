@@ -1,4 +1,4 @@
-This is JavaScript Array extended. It can throw event ```change```. You can use it for something like [Backbone Collection](http://backbonejs.org/#Collection).
+This is JavaScript Array extended. It can throw event ```change```. You can use it for something like light version of [Backbone Collection](http://backbonejs.org/#Collection).
 
 
 
@@ -254,5 +254,46 @@ fruits.on('change', function(event) {
 });
 
 fruits.trigger('change');
+// fruits list is changed.
+```
+
+Usecases
+========
+
+Send server updates when ```Arr``` is changed.
+
+```javascript
+var products = new Arr(
+  {
+    id: 1,
+    name: 'apple'
+  }, 
+  {
+    id: 2,
+    name: 'orange'
+  },
+  {
+    id: 3,
+    name: 'pineapple'
+  }
+);
+
+products.on('change', function(event) {
+  // products are changed
+  // you can use event.type == 'push' to detect items that you need to update on the server
+  
+  // $ is link on jQuery
+  $.post('/prosucts', products)
+    .fail(function() {
+      alert( "error" );
+    })
+    .done(function() {
+      alert( "products are saved" );
+    });
+});
+
+products.push({
+  name: 'lime'
+});
 // fruits list is changed.
 ```
