@@ -325,7 +325,7 @@ var products = new Arr(
 
 products.on('change', function(event) {
   // products are changed
-  // you can use event.type == 'push' to detect items that you need to update on the server
+  // you can use event.type == 'insert' or 'update' or 'remove' to detect items that you need to update on the server
   
   // $ is link on jQuery
   $.post('/prosucts', products)
