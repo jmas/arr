@@ -182,7 +182,7 @@ fruits.push.apply(fruits, ['apple', 'orange', 'pineapple']);
 // ['apple', 'orange', 'pineapple']
 ```
 
-For remove item(s) from ```Arr``` you can use traditional method ```splice()```.
+For remove item(s) from ```Arr``` you can use traditional method ```splice()``` (*note:* now you can use method ```remove()```).
 ```javascript
 var fruits = new Arr('apple', 'orange', 'pineapple');
 
