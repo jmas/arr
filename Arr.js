@@ -8,15 +8,21 @@
     arraySort = Array.prototype.sort,
     arraySplice = Array.prototype.splice,
     arrayUnshift = Array.prototype.unshift;
-   
+  
+  /**
+   *
+   */
   var Arr = function() {
     arrayPush.apply(this, arguments);
    
     this.events = [];
   };
-   
+  
   Arr.prototype = [];
-   
+  
+  /**
+   *
+   */
   Arr.prototype.events = [];
    
   /**
@@ -85,6 +91,9 @@
     return this;
   };
   
+  /**
+   *
+   */
   Arr.prototype.insert = function(items) {
     if (! items instanceof Array) {
       throw new Error('items should be an Array');
@@ -232,6 +241,8 @@
     });
     return result;
   };
+  
+  // export
 
   if (typeof module !== 'undefined') {
     module.exports = Arr;
