@@ -29,7 +29,6 @@
    *
    */
   Arr.prototype.get = function(index, defaultValue) {
-    defaultValue = typeof defaultValue === 'undefined' ? undefined: defaultValue;
     return typeof this[index] === 'undefined' ? defaultValue: this[index];
   };
    
@@ -72,10 +71,9 @@
       throw new Error('handler should be an Function');
     }
     
-    var oldValue, newValue;
-    var result = [];
+    var oldValue, newValue, i, result = [];
    
-    for (var i=0,len=this.length; i<len; i++) {
+    for (i=0,len=this.length; i<len; i++) {
       oldValue = this[i];
       newValue = handler.apply(this, [oldValue, i]);
       
@@ -119,10 +117,9 @@
       throw new Error('handler should be an Function');
     }
     
-    var result = [];
-    var stay = [];
+    var result = [], stay = [], i;
 
-    for (var i=0, len=this.length; i<len; i++) {
+    for (i=0, len=this.length; i<len; i++) {
       isRemove = handler.apply(this, [this[i], i]);
       
       if (isRemove === true) {
@@ -225,8 +222,8 @@
    * Adds and/or removes elements from an array.
    */
   Arr.prototype.splice = function() {
-    var items = this.slice(arguments[0], arguments[0]+arguments[1]);
-    var result = arraySplice.apply(this, arguments);
+    var items  = this.slice(arguments[0], arguments[0]+arguments[1]),
+        result = arraySplice.apply(this, arguments);
     this.trigger('change', {
       type: 'remove',
       items: items
