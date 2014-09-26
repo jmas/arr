@@ -60,7 +60,7 @@ fruits.get(10, 'lime'); // trying to get undefined element - return defaultValue
 // lime
 
 fruits.get(20); // trying to get undefined element
-// null
+// undefined
 ```
 
 Standard accessor methods are supported
