@@ -328,7 +328,7 @@ products.on('change', function(event) {
   // you can use event.type == 'insert' or 'update' or 'remove' to detect items that you need to update on the server
   
   // $ is link on jQuery
-  $.post('/prosucts', products)
+  $.post('/products', products)
     .fail(function() {
       alert('error');
     })
