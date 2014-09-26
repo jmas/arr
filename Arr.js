@@ -23,7 +23,7 @@
    *
    */
   Arr.prototype.get = function(index, defaultValue) {
-    defaultValue = typeof defaultValue === 'undefined' ? null: defaultValue;
+    defaultValue = typeof defaultValue === 'undefined' ? undefined: defaultValue;
     return typeof this[index] === 'undefined' ? defaultValue: this[index];
   };
    
