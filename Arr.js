@@ -37,6 +37,10 @@
    *
    */
   Arr.prototype.on = function(eventName, handler) {
+    if (! handler instanceof Function) {
+      throw new Error('handler should be an Function');
+    }
+    
     this.events.push({
       name: eventName,
       handler: handler
