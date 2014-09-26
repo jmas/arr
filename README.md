@@ -111,7 +111,7 @@ Example:
 ```javascript
 var fruits = new Arr();
 
-fruits.inser('apple', 'orange', 'pineapple');
+fruits.insert('apple', 'orange', 'pineapple');
 // ['apple', 'orange', 'pineapple']
 ```
 
