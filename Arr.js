@@ -23,7 +23,7 @@
   /**
    *
    */
-  Arr.prototype.events = [];
+  Arr.prototype.events = {};
    
   /**
    *
