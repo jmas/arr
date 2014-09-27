@@ -12,7 +12,7 @@
   var Arr = function() {
     arrayPush.apply(this, arguments);
    
-    this.events = [];
+    this.events = {};
   };
    
   Arr.prototype = [];
@@ -31,10 +31,11 @@
    *
    */
   Arr.prototype.on = function(eventName, handler) {
-    this.events.push({
-      name: eventName,
-      handler: handler
-    });
+    if (typeof this.events[eventName] === 'undefined') {
+      this.events[eventName] = [];
+    }
+
+    this.events[eventName].push(handler);
    
     return this;
   };
@@ -44,11 +45,13 @@
    */
   Arr.prototype.trigger = function(eventName, args) {
     args = args || [];
+
+    if (typeof this.events[eventName] === 'undefined') {
+      return this;
+    }
    
-    for (var i=0,len=this.events.length; i<len; i++) {
-      if (this.events[i].name == eventName) {
-        this.events[i].handler.apply(this, [args]);
-      }
+    for (var i=0,len=this.events[eventName].length; i<len; i++) {
+      this.events[eventName][i].apply(this, [args]);
     }
    
     return this;
