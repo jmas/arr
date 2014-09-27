@@ -7,15 +7,28 @@
     arrayShift = Array.prototype.shift,
     arraySort = Array.prototype.sort,
     arraySplice = Array.prototype.splice,
-    arrayUnshift = Array.prototype.unshift;
+    arrayUnshift = Array.prototype.unshift,
+    array = Array.prototype.constructor;
   
   /**
    *
    */
-  var Arr = function() {
-    arrayPush.apply(this, arguments);
-   
-    this.events = {};
+  function Arr() {
+    var instance = this;
+    
+    if (! instance instanceof Arr) {
+      instance = new Arr();
+    }
+        
+    if (arguments.length === 1 && typeof arguments[0] === 'number' && arguments[0] % 1 === 0) {
+      arrayPush.apply(instance, new Array(arguments[0]));
+    } else {
+      arrayPush.apply(instance, arguments);
+    }
+    
+    instance.events = {};
+    
+    return instance;
   };
   
   Arr.prototype = [];
