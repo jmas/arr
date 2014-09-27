@@ -36,23 +36,12 @@
    *
    */
   Arr.prototype.on = function(eventName, handler) {
-<<<<<<< HEAD
     if (typeof this.events[eventName] === 'undefined') {
       this.events[eventName] = [];
     }
 
     this.events[eventName].push(handler);
-=======
-    if (! handler instanceof Function) {
-      throw new Error('handler should be an Function');
-    }
-    
-    this.events.push({
-      name: eventName,
-      handler: handler
-    });
->>>>>>> 2cc9273bd3732a3893ec3114f298329e5f08aeb8
-   
+
     return this;
   };
    
