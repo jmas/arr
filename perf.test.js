@@ -1,6 +1,6 @@
 var Arr = require('./Arr.js');
 
-var n = 1000;
+var n = 1000000;
 
 var a = new Array();
 
