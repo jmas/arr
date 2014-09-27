@@ -64,14 +64,22 @@
   Arr.prototype.trigger = function(eventName, args) {
     args = args || [];
 
-    if (typeof this.events[eventName] === 'undefined') {
-      return this;
+    if (eventName instanceof Array) {
+      for (var k=0, klen=eventName.length; k<klen; k++) {
+        if (typeof this.events[eventName[k]] === 'undefined') {
+          return this;
+        }
+       
+        for (var i=0,len=this.events[eventName[k]].length; i<len; i++) {
+          this.events[eventName[k]][i].apply(this, [args]);
+        }
+      }
+    } else {
+      for (var i=0,len=this.events[eventName].length; i<len; i++) {
+        this.events[eventName][i].apply(this, [args]);
+      }
     }
-   
-    for (var i=0,len=this.events[eventName].length; i<len; i++) {
-      this.events[eventName][i].apply(this, [args]);
-    }
-   
+
     return this;
   };
    
@@ -96,11 +104,7 @@
     }
    
     if (result.length > 0) {
-      this.trigger('change', {
-        type: 'update',
-        items: result
-      });
-      this.trigger('update', {
+      this.trigger(['change', 'update'], {
         type: 'update',
         items: result
       });
@@ -118,11 +122,8 @@
     }
     
     arrayPush.apply(this, items);
-    this.trigger('change', {
-      type: 'insert',
-      items: items
-    });
-    this.trigger('insert', {
+
+    this.trigger(['change', 'insert'], {
       type: 'insert',
       items: items
     });
@@ -153,11 +154,7 @@
     arrayPush.apply(this, stay);
 
     if (result.length > 0) {
-      this.trigger('change', {
-        type: 'remove',
-        items: result
-      });
-      this.trigger('remove', {
+      this.trigger(['change', 'remove'], {
         type: 'remove',
         items: result
       });
@@ -175,11 +172,7 @@
     }
     
     this[index] = value;
-    this.trigger('change', {
-      type: 'update',
-      items: [this[index]]
-    });
-    this.trigger('update', {
+    this.trigger(['change', 'update'], {
       type: 'update',
       items: [this[index]]
     });
@@ -191,11 +184,8 @@
    */
   Arr.prototype.pop = function() {
     var result = arrayPop.apply(this, arguments);
-    this.trigger('change', {
-      type: 'remove',
-      items: [result]
-    });
-    this.trigger('remove', {
+
+    this.trigger(['change', 'remove'], {
       type: 'remove',
       items: [result]
     });
@@ -207,13 +197,10 @@
    */
   Arr.prototype.push = function() {
     var result = arrayPush.apply(this, arguments);
-    this.trigger('change', {
+
+    this.trigger(['change', 'insert'], {
       type: 'insert',
-      items: Array.prototype.slice.call(arguments, 0)
-    });
-    this.trigger('insert', {
-      type: 'insert',
-      items: Array.prototype.slice.call(arguments, 0)
+      items: arguments
     });
     return result;
   };
@@ -223,11 +210,8 @@
    */
   Arr.prototype.reverse = function() {
     var result = arrayReverse.apply(this, arguments);
-    this.trigger('change', {
-      type: 'update',
-      items: result.slice(0)
-    });
-    this.trigger('update', {
+
+    this.trigger(['change', 'update'], {
       type: 'update',
       items: result.slice(0)
     });
@@ -239,11 +223,8 @@
    */
   Arr.prototype.shift = function() {
     var result = arrayShift.apply(this, arguments);
-    this.trigger('change', {
-      type: 'remove',
-      items: [result]
-    });
-    this.trigger('remove', {
+
+    this.trigger(['change', 'remove'], {
       type: 'remove',
       items: [result]
     });
@@ -255,11 +236,8 @@
    */
   Arr.prototype.sort = function() {
     var result = arraySort.apply(this, arguments);
-    this.trigger('change', {
-      type: 'update',
-      items: result
-    });
-    this.trigger('update', {
+
+    this.trigger(['change', 'update'], {
       type: 'update',
       items: result
     });
@@ -272,11 +250,8 @@
   Arr.prototype.splice = function() {
     var items  = this.slice(arguments[0], arguments[0]+arguments[1]),
         result = arraySplice.apply(this, arguments);
-    this.trigger('change', {
-      type: 'remove',
-      items: items
-    });
-    this.trigger('remove', {
+
+    this.trigger(['change', 'remove'], {
       type: 'remove',
       items: items
     });
@@ -288,11 +263,8 @@
    */
   Arr.prototype.unshift = function() {
     var result = arrayUnshift.apply(this, arguments);
-    this.trigger('change', {
-      type: 'insert',
-      items: [result]
-    });
-    this.trigger('insert', {
+    
+    this.trigger(['change', 'insert'], {
       type: 'insert',
       items: [result]
     });
