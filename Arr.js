@@ -1,5 +1,6 @@
 (function(rootScope) {
   
+  // original Array methods
   var
     arrayPop = Array.prototype.pop,
     arrayPush = Array.prototype.push,
@@ -11,7 +12,7 @@
     array = Array.prototype.constructor;
   
   /**
-   *
+   * Constructor.
    */
   function Arr() {
     var instance = this;
@@ -31,22 +32,23 @@
     return instance;
   };
   
+  // Attach prototype
   Arr.prototype = [];
   
   /**
-   *
+   * Attached events.
    */
   Arr.prototype.events = {};
    
   /**
-   *
+   * Get value by index.
    */
   Arr.prototype.get = function(index, defaultValue) {
     return typeof this[index] === 'undefined' ? defaultValue: this[index];
   };
    
   /**
-   *
+   * Attach event handler.
    */
   Arr.prototype.on = function(eventName, handler) {
     if (typeof this.events[eventName] === 'undefined') {
@@ -59,7 +61,7 @@
   };
    
   /**
-   *
+   * Trigger event.
    */
   Arr.prototype.trigger = function(eventName, args) {
     args = args || [];
@@ -84,7 +86,7 @@
   };
    
   /**
-   *
+   * Update items by handler.
    */
   Arr.prototype.update = function(handler) {
     if (! handler instanceof Function) {
@@ -114,7 +116,7 @@
   };
   
   /**
-   *
+   * Insert array of items.
    */
   Arr.prototype.insert = function(items) {
     if (! items instanceof Array) {
@@ -131,7 +133,7 @@
   };
   
   /**
-   *
+   * Remove items by handler.
    */
   Arr.prototype.remove = function(handler) {
     if (! handler instanceof Function) {
@@ -164,7 +166,7 @@
   };
   
   /**
-   *
+   * Set value by index.
    */
   Arr.prototype.set = function(index, value) {
     if (! index instanceof Number) {
@@ -263,7 +265,7 @@
    */
   Arr.prototype.unshift = function() {
     var result = arrayUnshift.apply(this, arguments);
-    
+
     this.trigger(['change', 'insert'], {
       type: 'insert',
       items: [result]
@@ -271,7 +273,7 @@
     return result;
   };
   
-  // export
+  // exports
 
   if (typeof module !== 'undefined') {
     module.exports = Arr;
