@@ -87,6 +87,10 @@
         type: 'update',
         items: result
       });
+      this.trigger('update', {
+        type: 'update',
+        items: result
+      });
     }
    
     return this;
@@ -102,6 +106,10 @@
     
     arrayPush.apply(this, items);
     this.trigger('change', {
+      type: 'insert',
+      items: items
+    });
+    this.trigger('insert', {
       type: 'insert',
       items: items
     });
@@ -136,6 +144,10 @@
         type: 'remove',
         items: result
       });
+      this.trigger('remove', {
+        type: 'remove',
+        items: result
+      });
     }
    
     return this;
@@ -154,6 +166,10 @@
       type: 'update',
       items: [this[index]]
     });
+    this.trigger('update', {
+      type: 'update',
+      items: [this[index]]
+    });
     return this;
   };
    
@@ -163,6 +179,10 @@
   Arr.prototype.pop = function() {
     var result = arrayPop.apply(this, arguments);
     this.trigger('change', {
+      type: 'remove',
+      items: [result]
+    });
+    this.trigger('remove', {
       type: 'remove',
       items: [result]
     });
@@ -178,6 +198,10 @@
       type: 'insert',
       items: Array.prototype.slice.call(arguments, 0)
     });
+    this.trigger('insert', {
+      type: 'insert',
+      items: Array.prototype.slice.call(arguments, 0)
+    });
     return result;
   };
    
@@ -187,6 +211,10 @@
   Arr.prototype.reverse = function() {
     var result = arrayReverse.apply(this, arguments);
     this.trigger('change', {
+      type: 'update',
+      items: result.slice(0)
+    });
+    this.trigger('update', {
       type: 'update',
       items: result.slice(0)
     });
@@ -202,6 +230,10 @@
       type: 'remove',
       items: [result]
     });
+    this.trigger('remove', {
+      type: 'remove',
+      items: [result]
+    });
     return result;
   };
    
@@ -211,6 +243,10 @@
   Arr.prototype.sort = function() {
     var result = arraySort.apply(this, arguments);
     this.trigger('change', {
+      type: 'update',
+      items: result
+    });
+    this.trigger('update', {
       type: 'update',
       items: result
     });
@@ -227,6 +263,10 @@
       type: 'remove',
       items: items
     });
+    this.trigger('remove', {
+      type: 'remove',
+      items: items
+    });
     return result;
   };
    
@@ -236,6 +276,10 @@
   Arr.prototype.unshift = function() {
     var result = arrayUnshift.apply(this, arguments);
     this.trigger('change', {
+      type: 'insert',
+      items: [result]
+    });
+    this.trigger('insert', {
       type: 'insert',
       items: [result]
     });
