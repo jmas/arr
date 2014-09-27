@@ -2,7 +2,7 @@
   "name": "arr",
   "repository": "jmas/arr",
   "description": "JavaScript Array extended",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "keywords": ["array", "collection"],
   "scripts": ["Arr.js"],
   "main": "Arr.js",
