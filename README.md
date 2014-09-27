@@ -5,7 +5,7 @@ This is JavaScript Array extended. It can throw event ```change```. You can use 
 new Arr([item1, item2, ..., itemN])
 ===================================
 
-Initialize new array items: ```item1, item2, ..., itemN```.
+Initialize new array with items: ```item1, item2, ..., itemN```.
 
 
 
@@ -60,7 +60,7 @@ fruits.get(10, 'lime'); // trying to get undefined element - return defaultValue
 // lime
 
 fruits.get(20); // trying to get undefined element
-// null
+// undefined
 ```
 
 Standard accessor methods are supported
@@ -111,7 +111,7 @@ Example:
 ```javascript
 var fruits = new Arr();
 
-fruits.inser('apple', 'orange', 'pineapple');
+fruits.insert('apple', 'orange', 'pineapple');
 // ['apple', 'orange', 'pineapple']
 ```
 
@@ -328,7 +328,7 @@ products.on('change', function(event) {
   // you can use event.type == 'insert' or 'update' or 'remove' to detect items that you need to update on the server
   
   // $ is link on jQuery
-  $.post('/prosucts', products)
+  $.post('/products', products)
     .fail(function() {
       alert('error');
     })

@@ -8,22 +8,27 @@
     arraySort = Array.prototype.sort,
     arraySplice = Array.prototype.splice,
     arrayUnshift = Array.prototype.unshift;
-   
+  
+  /**
+   *
+   */
   var Arr = function() {
     arrayPush.apply(this, arguments);
    
     this.events = {};
   };
-   
+  
   Arr.prototype = [];
-   
+  
+  /**
+   *
+   */
   Arr.prototype.events = [];
    
   /**
    *
    */
   Arr.prototype.get = function(index, defaultValue) {
-    defaultValue = typeof defaultValue === 'undefined' ? null: defaultValue;
     return typeof this[index] === 'undefined' ? defaultValue: this[index];
   };
    
@@ -31,11 +36,22 @@
    *
    */
   Arr.prototype.on = function(eventName, handler) {
+<<<<<<< HEAD
     if (typeof this.events[eventName] === 'undefined') {
       this.events[eventName] = [];
     }
 
     this.events[eventName].push(handler);
+=======
+    if (! handler instanceof Function) {
+      throw new Error('handler should be an Function');
+    }
+    
+    this.events.push({
+      name: eventName,
+      handler: handler
+    });
+>>>>>>> 2cc9273bd3732a3893ec3114f298329e5f08aeb8
    
     return this;
   };
@@ -65,10 +81,9 @@
       throw new Error('handler should be an Function');
     }
     
-    var oldValue, newValue;
-    var result = [];
+    var oldValue, newValue, i, result = [];
    
-    for (var i=0,len=this.length; i<len; i++) {
+    for (i=0,len=this.length; i<len; i++) {
       oldValue = this[i];
       newValue = handler.apply(this, [oldValue, i]);
       
@@ -88,6 +103,9 @@
     return this;
   };
   
+  /**
+   *
+   */
   Arr.prototype.insert = function(items) {
     if (! items instanceof Array) {
       throw new Error('items should be an Array');
@@ -109,10 +127,9 @@
       throw new Error('handler should be an Function');
     }
     
-    var result = [];
-    var stay = [];
+    var result = [], stay = [], i;
 
-    for (var i=0, len=this.length; i<len; i++) {
+    for (i=0, len=this.length; i<len; i++) {
       isRemove = handler.apply(this, [this[i], i]);
       
       if (isRemove === true) {
@@ -215,8 +232,8 @@
    * Adds and/or removes elements from an array.
    */
   Arr.prototype.splice = function() {
-    var items = this.slice(arguments[0], arguments[0]+arguments[1]);
-    var result = arraySplice.apply(this, arguments);
+    var items  = this.slice(arguments[0], arguments[0]+arguments[1]),
+        result = arraySplice.apply(this, arguments);
     this.trigger('change', {
       type: 'remove',
       items: items
@@ -235,6 +252,8 @@
     });
     return result;
   };
+  
+  // export
 
   if (typeof module !== 'undefined') {
     module.exports = Arr;

@@ -3,7 +3,11 @@
   "repository": "jmas/arr",
   "description": "JavaScript Array extended",
   "version": "0.1.1",
+<<<<<<< HEAD
   "keywords": ["array", "events", "model"],
+=======
+  "keywords": ["array", "collection"],
+>>>>>>> 2cc9273bd3732a3893ec3114f298329e5f08aeb8
   "scripts": ["Arr.js"],
   "main": "Arr.js",
   "license": "MIT"
