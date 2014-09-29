@@ -167,6 +167,7 @@ var fruits = new Arr('apple', 'orange', 'pineapple');
 fruits.remove();
 // fruits
 // []
+```
 
 Standard mutator methods are supported
 --------------------------------------
