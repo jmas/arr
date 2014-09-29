@@ -160,6 +160,14 @@ fruits.remove(function(value, index) {
 
 Method ```remove()``` without arguments - will remove all items.
 
+Example:
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+fruits.remove();
+// fruits
+// []
+
 Standard mutator methods are supported
 --------------------------------------
 
