@@ -68,7 +68,7 @@
     if (eventName instanceof Array) {
       for (var k=0, klen=eventName.length; k<klen; k++) {
         if (typeof this.events[eventName[k]] === 'undefined') {
-          return this;
+          continue;
         }
        
         for (var i=0,len=this.events[eventName[k]].length; i<len; i++) {
