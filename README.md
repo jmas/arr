@@ -141,7 +141,7 @@ fruits.update(function(value, index) {
 // [0, 1, 2]
 ```
 
-remove(handler)
+remove([handler])
 ---------------
 
 Remove item if ```handler``` return ```true```. Will be triggered event ```change``` if one or more items removed.
@@ -157,6 +157,8 @@ fruits.remove(function(value, index) {
 });
 // ['orange']
 ```
+
+Method ```remove()``` without arguments - will remove all items.
 
 Standard mutator methods are supported
 --------------------------------------
