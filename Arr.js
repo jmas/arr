@@ -140,6 +140,14 @@
    * Remove items by handler.
    */
   Arr.prototype.remove = function(handler) {
+    if (typeof handler === 'undefined') { // drop all items
+      if (this.length > 0) {
+        this.splice(0, this.length);
+      }
+      
+      return this;
+    }
+    
     if (! handler instanceof Function) {
       throw new Error('handler should be an Function');
     }
