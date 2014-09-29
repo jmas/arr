@@ -1,4 +1,4 @@
-This is JavaScript Array extended. It can throw event ```change```. You can use it for something like light version of [Backbone Collection](http://backbonejs.org/#Collection).
+This is JavaScript Array extended. It can throw events ```change```, ```insert```, ```update```, ```remove```. You can use it for something like light version of [Backbone Collection](http://backbonejs.org/#Collection).
 
 
 
@@ -81,12 +81,12 @@ and [other methods](https://developer.mozilla.org/en/docs/Web/JavaScript/Referen
 Mutator methods
 ===============
 
-***Notice:*** Traditional mutator ```arr[index] = value``` do not trigger event ```change```. Use method ```set(index, value)``` instead ```arr[index] = value```.
+***Notice:*** Traditional mutator ```arr[index] = value``` do not trigger events ```change```, ```update```. Use method ```set(index, value)``` instead ```arr[index] = value```.
 
 set(index, value)
 -----------------
 
-Set value by index. Will be triggered event ```change```.
+Set value by index. Will be triggered event ```change```, ```update```.
 
 Example:
 ```javascript
@@ -105,7 +105,7 @@ fruits.set(3, 'nut');
 insert([item1, item2, ..., itemN])
 ----------------------------------
 
-Insert array of items. Will be triggered event ```change```.
+Insert array of items. Will be triggered events ```change```, ```insert```.
 
 Example:
 ```javascript
@@ -228,7 +228,7 @@ var fruitsWithWordApple = fruits.filter(function(value, index) {
 Events
 ======
 
-Instance of Arr throw only one event ```change```.
+Instance of Arr can throw events ```change```, ```insert```, ```update```, ```remove```.
 
 How to use events? You can use array events like events in [Backbone Collection](http://backbonejs.org/#Collection).
 
