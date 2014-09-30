@@ -12,8 +12,8 @@ Initialize new array with items: ```item1, item2, ..., itemN```.
 Properties
 ==========
 
-events
-------
+.events
+-------
 
 List of Attached Events.
 
@@ -36,8 +36,8 @@ fruits.push('mango');
 // ['apple', 'orange', 'pineapple', 'mango']
 ```
 
-length
-------
+.length
+-------
 
 Standard property [```length```](Standart accessor methods supported).
 
