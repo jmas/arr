@@ -297,6 +297,25 @@ fruits.on('change', function(event) {
 fruits.push('mango');
 ```
 
+off(eventName [, handler])
+--------------------------
+
+Remove attached event handler.
+
+Example:
+```javascript
+var fruits = new Arr('apple', 'orange', 'pineapple');
+
+var changeHandler = function(event) {
+  console.log('fruits list is changed.');
+};
+
+fruits.on('change', changeHandler);
+
+fruits.off('change', changeHandler); // remove only one handler
+fruits.off('change'); // remove all handlers attached to event change
+```
+
 trigger(eventName [, args])
 ---------------------------
 
