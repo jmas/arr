@@ -58,6 +58,23 @@
 
     return this;
   };
+  
+  /**
+   * Remove attached event handler.
+   */
+  Arr.prototype.off = function(eventName, handler) {
+    if (typeof this.events[eventName] === 'undefined') {
+      return this;
+    }
+
+    for (var i=0,len=this.events[eventName].length; i<len; i++) {
+      if (this.events[eventName][i] === handler) {
+        this.events[eventName].splice(i, 1);
+      }
+    }
+    
+    return this;
+  };
    
   /**
    * Trigger event.
