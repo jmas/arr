@@ -66,6 +66,11 @@
     if (typeof this.events[eventName] === 'undefined') {
       return this;
     }
+    
+    if (typeof handler === 'undefined') {
+      this.events[eventName] = undefined;
+      return this;
+    }
 
     for (var i=0,len=this.events[eventName].length; i<len; i++) {
       if (this.events[eventName][i] === handler) {
